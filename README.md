@@ -40,7 +40,7 @@ Incluido en el seeder:
 Email: test@example.com  
 Contraseña: password  
 
-(No se utiliza dentro de la aplicación, ya que no existe autenticación.)
+(No se utiliza dentro de la aplicación, porque no existe autenticación.)
 
 ---
 
