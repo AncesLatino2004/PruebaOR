@@ -65,4 +65,18 @@ class IncidentController extends Controller
         $logs = $incident->logs()->orderBy('created_at', 'desc')->get();
         return view('incidents.logs', compact('incident', 'logs'));
     }
+
+    // el Delete para borrar incidencias y por ende sus logs
+    
+    public function destroy(Incident $incident)
+    {
+        // Eliminar logs asociados
+        $incident->logs()->delete();
+
+        // Eliminar la incidencia
+        $incident->delete();
+
+        return redirect()->route('incidents.index')->with('success', 'Incidencia eliminada correctamente.');
+    }
+
 }

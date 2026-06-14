@@ -9,8 +9,11 @@
 <div class="container py-4">
     <h1 class="mb-4">Panel de incidencias</h1>
 
+
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
 
     {{-- Crear incidencia --}}
@@ -118,6 +121,13 @@
                     <a href="{{ route('incidents.logs', $incident) }}" class="btn btn-sm btn-outline-secondary">
                         Historial
                     </a>
+                    <form action="{{ route('incidents.destroy', $incident->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('¿Seguro que quieres eliminar esta incidencia?');">
+                   
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+
                 </td>
             </tr>
         @endforeach
